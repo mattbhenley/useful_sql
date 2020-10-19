@@ -99,3 +99,62 @@ ADD CONSTRAINT primarykeyname PRIMARY KEY (column_1);
 ALTER TABLE table_name
 DROP CONSTRAINT constraintname;
 ```
+##### Removing Constraints - MySQL
+**To drop a constraint:**
+```
+ALTER TABLE table_name
+DROP INDEX constraintname;
+```
+
+**To drop the primary key:**
+```
+ALTER TABLE table_name
+DROP PRIMARY KEY;
+```
+---
+## Aggregate Functions
+### Basic Selects
+```
+SELECT count(*)
+FROM table_name;
+```
+**Note:** If you specify a column name instead of (\*), the number returned is the amount of rows that do not contain a NULL value. Using (\*) will return the amount of rows including those with a NULL value.
+
+For columns containing numbers:
+```
+SELECT sum(column_name)
+FROM table_name;
+```
+```
+SELECT avg(column_name)
+FROM table_name;
+```
+```
+SELECT max(column_name)
+FROM table_name;
+```
+```
+SELECT min(column_name)
+FROM table_name;
+```
+### Using GROUP BY
+```
+SELECT column_1, sum(column_2)
+FROM table_name
+GROUP BY column_1
+```
+### Filtering using HAVING
+```
+SELECT column_1, sum(column_2)
+FROM table_name
+GROUP BY column_1
+HAVING count(*) > 1;
+```
+### Using a WHERE clause
+```
+SELECT column_1, sum(column_2)
+FROM table_name
+WHERE column_2 > 10000
+GROUP BY column_1
+HAVING count(*) > 1;
+```
